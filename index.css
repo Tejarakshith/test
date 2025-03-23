@@ -1,0 +1,157 @@
+
+.logo{
+    width: 50px;
+    height: 50px;
+}
+#header{
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   padding: 20px ;
+   background: rgba(151, 207, 233, 0.4);
+   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+
+}
+.search-container {
+    display: flex;
+    align-items: center;
+    background: white;
+    padding: 8px;
+    border-radius: 25px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+input[type="text"] {
+    border: none;
+    outline: none;
+    padding: 8px;
+    font-size: 16px;
+    width: 550px;
+}
+.search-container button {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+button:hover {
+    background: #0056b3;
+}
+
+
+#navbar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#navbar li{
+    align-items: center;
+    padding: 0 20px;
+    list-style: none;
+
+} 
+#navbar li a{
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 600;
+    color: darkturquoise;
+    position: relative;
+}
+#navbar li a:hover,
+#navbar li a.active{
+    color: rgb(203, 224, 69);
+
+}
+#navbar .icon{
+    position: relative;
+    
+
+}
+#navbar span{
+    display: flex;
+    background-color: rgb(230, 0, 0);
+    width: 15px;  
+    height: 15px; 
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin-right: -150px;  
+    margin-top: 5px;
+    position: absolute;
+   
+}
+.img{
+    width: 550px;
+    height: 650px;
+
+}
+.mid{
+    height: 90vh;
+    padding: 0 20px;
+    background-color: rgb(231, 144, 225);
+    display: flex;
+    justify-content: space-between;    
+}
+.info{
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 160px;
+    
+    
+}
+.mid img{
+    width: 550px;
+    height: 650px;
+}
+
+.mid h1{
+    font-size: 50px;
+    font-weight: 100px;
+    color: aqua;
+    font-style: italic;
+    text-shadow: 100px;
+    text-decoration: solid;
+    margin-bottom: 5px;
+    margin-top: 5px;
+
+}
+.mid h2{
+    font-size: 40px;
+    font-weight: 100px;
+    color: antiquewhite;
+    margin-bottom: 5px;
+    
+    
+}
+.mid p{
+    font-size: 15px;
+    font-weight: 50px;
+    color: rgb(202, 225, 217);
+    margin-top: 5px;
+    margin-bottom: 25px;
+
+}
+.mid button{
+    color: rgb(220, 218, 218);
+    background-color: rgb(228, 69, 69);
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    
+    
+}
+.mid button:hover{
+    background-color: rgb(148, 56, 56);
+
+} 
+#footer{
+    color: ivory;
+    height: 90px;
+    width: 100%;
+    background-color: black;
+    padding: 5PX;
+}

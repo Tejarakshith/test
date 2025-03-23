@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-commerce-Website</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="help.css">
+   
+
+</head>
+<body>
+    <section id="header">
+        <a href="#"><img src="images/logo.png" class="logo" alt=""> </a>
+        <div class="search-container">
+            <input type="text" placeholder="Search...">
+            <button>Search</button>
+        </div>
+        <div>
+            <ul id="navbar">
+                <li><a href="index.html" >Home</a></li>
+                <li><a href="product.html" >Product</a></li>
+                <li class="icon" ><a href="cart.html" ><i class="fa-solid fa-cart-shopping"></i></a></li>
+                <span id="cart-count">0</span>
+                <li><a class="active" href="help.html" >help</a></li>
+    
+            </ul>
+        </div> 
+    </section>
+
+    <section id="helpinfo">
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleAnswer(this)">What is this website about? <span>+</span></div>
+                <div class="faq-answer">This website provides information  on various desings and cloths.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleAnswer(this)">How can I contact support? <span>+</span></div>
+                <div class="faq-answer">You can contact support via email at support@example.com.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleAnswer(this)">Is there a refund policy? <span>+</span></div>
+                <div class="faq-answer">Yes, we offer a 30-day refund policy.</div>
+            </div>
+        </div>
+
+
+    </section>
+
+    <script src="help.js"></script>
+</body>
+</html>

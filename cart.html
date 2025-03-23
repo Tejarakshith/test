@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="cart.css">
+</head>
+<body>
+    <section id="header">
+        <a href="#"><img src="images/logo.png" class="logo" alt=""> </a>
+        <div class="search-container">
+            <input type="text" placeholder="Search...">
+            <button>Search</button>
+        </div>
+        <div>
+            <ul id="navbar">
+                <li><a href="index.html" >Home</a></li>
+                <li><a href="product.html" >Product</a></li>
+                <li><a class="active" href="cart.html" ><i class="fa-solid fa-cart-shopping"></i></a></li>
+                <span id="cart-count">0</span>
+                <li><a href="help.html" >help</a></li>
+
+            </ul>
+        </div> 
+    </section>
+
+    <section id="mid">
+        <div class="hero">
+            <h1>Shopping Cart</h1>
+            <div id="cart-items"></div>
+            <h2>Total: $<span id="total-price">0</span></h2>
+            <div class="hero1">
+              <button class="b2" onclick="document.location='product.html'">Back to Products</a>
+              <button class="b1" onclick="clearCart()">Clear Cart</button>
+              <button class="b3" onclick="proceedToPayment()">BUY</button> 
+            </div>
+        </div>
+    </section>
+
+    <section id="footer">
+        <P>@KINGDOM OF DESINGS</P>
+        <p>Powred By</p>
+    </section>
+
+
+    <script>
+
+      function loadCart() {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const cartItemsDiv = document.getElementById("cart-items");
+        let totalPrice = 0;
+    
+        cartItemsDiv.innerHTML = "";
+        
+        cart.forEach((item, index) => {
+            const itemTotal = item.price * item.quantity;
+            totalPrice += itemTotal;
+    
+            // Create cart item container
+            const itemDiv = document.createElement("div");
+            itemDiv.className = "cart-item";
+            itemDiv.innerHTML = `
+            <div class="itemname">
+                <span>${item.name} - $${item.price.toFixed(2)} each</span>
+                <div class="quantity-controls">
+                    <button onclick="changeQuantity(${index}, -1)">&#9660;</button>
+                    <input type="number" min="1" value="${item.quantity}" data-index="${index}" 
+                        onchange="updateQuantity(this)" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                    <button onclick="changeQuantity(${index}, 1)">&#9650;</button>
+                </div>
+                <span>= $<span class="item-total">${itemTotal.toFixed(2)}</span></span>
+            </div>
+            `;
+            cartItemsDiv.appendChild(itemDiv);
+        });
+    
+        document.getElementById("total-price").innerText = totalPrice.toFixed(2);
+    }
+    
+    function changeQuantity(index, delta) {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        if (cart[index]) {
+            let newQuantity = cart[index].quantity + delta;
+            if (newQuantity < 1) newQuantity = 1;
+            cart[index].quantity = newQuantity;
+            localStorage.setItem('cart', JSON.stringify(cart));
+            loadCart();
+        }
+    }
+    
+    function updateQuantity(input) {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const index = parseInt(input.dataset.index, 10);
+        let newQuantity = parseInt(input.value, 10);
+    
+        if (isNaN(newQuantity) || newQuantity < 1) {
+            newQuantity = 1;
+        }
+    
+        cart[index].quantity = newQuantity;
+        localStorage.setItem('cart', JSON.stringify(cart));
+        loadCart();
+    }
+    function updateCartCount() {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      let itemCount = cart.reduce((total, item) => total + item.quantity, 0); // Sum of all item quantities
+      document.getElementById("cart-count").innerText = itemCount;
+    }
+    function clearCart() {
+        localStorage.removeItem('cart');
+        loadCart();
+    }
+    
+    // Load cart on page load
+    loadCart();
+    updateCartCount();
+
+          function proceedToPayment() {
+            window.location.href = "payment.html"; // Redirect to the payment page
+          }
+    </script>
+</body>
+</html>

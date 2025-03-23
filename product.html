@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="product.css">
+</head>
+<body>
+    <section id="header">
+        <a href="#"><img src="images/logo.png" class="logo" alt=""> </a>
+        <div class="search-container">
+            <input type="text" placeholder="Search...">
+            <button>Search</button>
+        </div>
+        <div>
+            <ul id="navbar">
+                <li><a href="index.html" >Home</a></li>
+                <li><a class="active" href="product.html" >Product</a></li>                
+                <li class="icon" ><a href="cart.html" ><i class="fa-solid fa-cart-shopping"></i></a></li>
+                <span id="cart-count">0</span>
+                <li><a href="help.html" >help</a></li>
+
+            </ul>
+        </div> 
+    </section>
+    <section id="hero">
+    <h1>Products</h1>
+    <div id="product-list">
+        <div class="product" data-name="Yellow Saree" data-price="100" >
+            <img id="productimage" src="images/img1.jpg" alt="Product Image">
+            <p>Yellow Saree - $100</p>
+            <button onclick="addToCart('Yellow Saree', 100)">Add to Cart</button>
+        </div>
+        <div class="product" data-name="Red Saree" data-price="200">
+            <img src="images/img2.jpg">
+            <p>Red Saree - $200</p>
+            <button onclick="addToCart('Red Saree', 200)">Add to Cart</button>
+        </div>
+        <div class="product" data-name="Chudidhar" data-price="200">
+            <img src="images/img3.jpg">
+            <p>Chudidhar - $200</p>
+            <button onclick="addToCart('Chudidhar', 200)">Add to Cart</button>
+        </div>
+        <div class="product" data-name="Black Saree" data-price="200">
+            <img src="images/img4.jpg">
+            <p>Black Saree - $200</p>
+            <button onclick="addToCart('Black Saree', 200)">Add to Cart</button>
+        </div>
+        <div class="product" data-name="Croptop" data-price="200">
+            <img src="images/img5.jpg">
+            <p>Croptop - $200</p>
+            <button onclick="addToCart('Croptop', 200)">Add to Cart</button>
+        </div>
+        <div class="product" data-name="T-Shirt" data-price="200">
+            <img src="images/img6.jpg">
+            <p>T-Shirt - $200</p>
+            <button onclick="addToCart('T-Shirt', 200)">Add to Cart</button>
+        </div>
+    </div>
+   
+
+    <button class="shift" onclick="document.location='cart.html'">Go to Cart</button>
+    </section>
+    <section id="footer">
+        <P>@KINGDOM OF DESINGS</P>
+        <p>Powred By</p>
+        <P>@KINGDOM OF DESINGS</P>
+        <p>Powred By</p>
+    </section>
+
+    <script>
+
+        function addToCart(name, price) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        
+            // Check if item already exists in cart
+            let existingItem = cart.find(item => item.name === name);
+        
+            if (existingItem) {
+                existingItem.quantity += 1; // Increase quantity
+            } else {
+                cart.push({ name, price: parseFloat(price), quantity: 1 });
+            }
+        
+            localStorage.setItem('cart', JSON.stringify(cart));
+                     
+            updateCartCount(); // Update cart count on UI
+
+            alert(`${name} added to cart!`);   
+            
+           
+        }
+        function updateCartDisplay() {
+            let cartCount = localStorage.getItem("cartCount") || 0;
+            let itemCount = cart.reduce((total, item) => total + item.quantity, 0); // Sum of all item quantities
+            document.getElementById("cart-count").innerText = itemcount;
+
+        }
+        function updateCartCount() {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let itemCount = cart.reduce((total, item) => total + item.quantity, 0); // Sum of all item quantities
+            let cartCountElement = document.getElementById("cart-count");
+        
+            if (cartCountElement) {
+                cartCountElement.innerText = itemCount;
+            }
+        }
+
+        updateCartCount();
+        
+      
+
+    </script>
+</body>
+</html>
